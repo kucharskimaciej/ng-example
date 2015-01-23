@@ -1,0 +1,7 @@
+<nav class="Navigation">
+    <navigation-item class="Navigation-item"
+             ng-repeat="item in ::items track by $id(item)"
+             title="{{ item.name }}"
+             state="{{ item.sref }}"
+            />
+</nav>
