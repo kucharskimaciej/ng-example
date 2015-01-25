@@ -1,11 +1,13 @@
 angular.module('templates').run(['$templateCache', function($templateCache) {
   $templateCache.put('errors/404.html',
-    '');
+    '<h1>Error {{ ctrl.errorCode }}</h1>');
 }]);
 
 angular.module('templates').run(['$templateCache', function($templateCache) {
   $templateCache.put('installations/chart.html',
-    '<div>chart!</div>');
+    '<h1>Chart!</h1>\n' +
+    '\n' +
+    '<highchart id="chart1" config="ctrl.chartOptions"></highchart>');
 }]);
 
 angular.module('templates').run(['$templateCache', function($templateCache) {
@@ -15,8 +17,14 @@ angular.module('templates').run(['$templateCache', function($templateCache) {
 
 angular.module('templates').run(['$templateCache', function($templateCache) {
   $templateCache.put('installations/layout.html',
-    '<section ui-view="chart"></section>\n' +
-    '<section ui-view="main"></section>');
+    '<div class="row">\n' +
+    '    <div class="col-lg-4">\n' +
+    '        <h1>Hello</h1>\n' +
+    '        <p>Some not-so-dynamic content.</p>\n' +
+    '    </div>\n' +
+    '    <section ui-view="chart" class="col-lg-8"></section>\n' +
+    '    <section ui-view="main" class="col-lg-12"></section>\n' +
+    '</div>');
 }]);
 
 angular.module('templates').run(['$templateCache', function($templateCache) {
@@ -25,11 +33,6 @@ angular.module('templates').run(['$templateCache', function($templateCache) {
     '    <navbar items="::mainNavigationItems"></navbar>\n' +
     '</aside>\n' +
     '<section ui-view></section>');
-}]);
-
-angular.module('templates').run(['$templateCache', function($templateCache) {
-  $templateCache.put('logs/index.html',
-    '<span>some html</span>');
 }]);
 
 angular.module('templates').run(['$templateCache', function($templateCache) {

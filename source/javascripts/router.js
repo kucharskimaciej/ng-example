@@ -10,7 +10,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('support.installations', {
             url: '',
             abstract: true,
-            templateUrl: 'installations/layout.html'
+            templateUrl: 'installations/layout.html',
+            controller: 'InstallationsController as ctrl'
         })
         .state('support.installations.index', {
             url: '/',
@@ -31,13 +32,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'LogsIndexController as ctrl'
         })
         .state('404', {
-            url: '/4oh4',
             templateUrl: 'errors/404.html',
-            controller: 'ErrorController',
+            controller: 'ErrorController as ctrl',
             data: {
                 error: '404'
             }
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.when('', '/');
+    $urlRouterProvider.otherwise(function ($injector) {
+       $injector.invoke(function ($state) {
+         $state.go('404');
+       });
+    });
 });
