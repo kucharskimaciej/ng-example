@@ -7,7 +7,7 @@ angular.module('templates').run(['$templateCache', function($templateCache) {
   $templateCache.put('installations/chart.html',
     '<h1>Chart!</h1>\n' +
     '\n' +
-    '<highchart id="chart1" config="ctrl.chartOptions"></highchart>');
+    '<highchart config="ctrl.chartOptions"></highchart>');
 }]);
 
 angular.module('templates').run(['$templateCache', function($templateCache) {
@@ -33,6 +33,18 @@ angular.module('templates').run(['$templateCache', function($templateCache) {
     '    <navbar items="::mainNavigationItems"></navbar>\n' +
     '</aside>\n' +
     '<section ui-view></section>');
+}]);
+
+angular.module('templates').run(['$templateCache', function($templateCache) {
+  $templateCache.put('logs/index.html',
+    '<h1>Logs</h1>\n' +
+    '<table>\n' +
+    '    <tr><th>Active</th><th>Log</th></tr>\n' +
+    '    <tr ng-repeat="log in ctrl.logs">\n' +
+    '        <td>{{ log.isActive }}</td>\n' +
+    '        <td>{{ log.content }}</td>\n' +
+    '    </tr>\n' +
+    '</table>');
 }]);
 
 angular.module('templates').run(['$templateCache', function($templateCache) {

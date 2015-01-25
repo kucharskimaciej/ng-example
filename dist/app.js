@@ -144,7 +144,7 @@ angular.module('installations')
         vm.mainGridOptions = MainGrid.getOptions();
     });
 angular.module('installations')
-    .controller('InstallationsController', function InstallationsChartController () {
+    .controller('InstallationsController', function InstallationsController () {
         var vm = this;
 
         var templates = [
@@ -211,7 +211,28 @@ angular.module('installations.index')
             return options;
         }
     })
+angular.module('logs')
+    .controller('LogsIndexController', function LogsIndexController (Logs) {
+        var vm = this;
+        Logs.get().then(function (res) {
+            console.log(res);
+            vm.logs = res.data;
+        });
 
+
+    });
+angular.module('logs')
+    .factory('Logs', function ($http) {
+        var url = 'http://www.json-generator.com/api/json/get/cunoibSgQy?indent=2';
+
+
+        return {
+            get: function () {
+                return $http.get(url);
+            }
+        }
+
+    });
 angular.module('common.navigation')
     .run(function ($rootScope) {
         $rootScope.mainNavigationItems = [

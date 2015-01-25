@@ -1,5 +1,5 @@
 angular.module('installations')
-    .controller('InstallationsController', function InstallationsChartController () {
+    .controller('InstallationsController', function InstallationsController () {
         var vm = this;
 
         var templates = [
